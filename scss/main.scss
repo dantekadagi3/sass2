@@ -1,0 +1,56 @@
+//including the partial folder to the main folder 
+//use the @import
+@import './resets';
+@import './variables';
+
+
+
+//maps in sass
+//maps are similar to arrays
+//they are a list of key value pairs
+
+//maps in sass
+$font-weights:(
+    "regular":400,
+    "medium":500,
+    "bold"700
+);
+
+/*it is a great feature in saas but 
+not suitable for big projects 
+using classes that can be used and re-used
+is much more suitable for big projects*/
+
+
+body{
+    background:blue;
+    color:$text-color;
+    $font-weights:map-get($font-weights, bold)
+}
+.main{
+    width:80%;
+    margin:0 auto;
+}
+/*in normal css to edit the paragraphs within the
+main section we would have to write code as it appears
+below*/
+.main p{
+    font-weight: bold;
+}
+//but in sass there is nesting as shown 
+//below
+//in sass & is equal to the parent
+//but to ensure it translates appropriately
+//in css we do interpolation by addin # as shown 
+//below
+main{
+    width: 80%;
+    margin:0 auto;
+   #{&}_paragraph{
+   $font-weights:map-get($font-weights , bold);
+    &:hover{
+        color:pink;
+    }
+
+    }
+}
